@@ -10,6 +10,55 @@
     $(function() {
 	            var params = {
 			                // Request parameters
+			                
+    "faceRectangle": {
+      "top": 91,
+      "left": 92,
+      "width": 108,
+      "height": 108
+    },
+    "faceAttributes": {
+      "smile": 1,
+      "gender": "male",
+      "age": 30.6,
+      "facialHair": {
+        "moustache": 0.1,
+        "beard": 0.2,
+        "sideburns": 0.2
+      },
+      "glasses": "NoGlasses",
+      "accessories": [],
+      "hair": {
+        "bald": 0,
+        "invisible": false,
+        "hairColor": [
+          {
+            "color": "black",
+            "confidence": 1
+          },
+          {
+            "color": "brown",
+            "confidence": 0.71
+          },
+          {
+            "color": "other",
+            "confidence": 0.64
+          },
+          {
+            "color": "red",
+            "confidence": 0.08
+          },
+          {
+            "color": "gray",
+            "confidence": 0.04
+          },
+          {
+            "color": "blond",
+            "confidence": 0.02
+          }
+        ]
+      }
+    }
 			            };
 
 		            $.ajax({
