@@ -9,8 +9,7 @@
 	<body>
 
 	<script type="text/javascript">
-		var emo = '';
-		
+		var atributos = '';
 	function processImage() {
         var subscriptionKey = "eb77d769df3046069ec0ccefc4701cd2";
         var uriBase = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
@@ -25,7 +24,7 @@
 		// Display the image.
 		var sourceImageUrl = document.getElementById("inputImage").value;
 		document.querySelector("#sourceImage").src = sourceImageUrl;
-		console.log(sourceImageUrl)
+		//console.log(sourceImageUrl)
 		// Perform the REST API call.
 		$.ajax({
 			url: uriBase + "?" + $.param(params),
@@ -39,13 +38,10 @@
 		data: '{"url": ' + '"' + sourceImageUrl + '"}',})
         .done(function(data) {
 		// Show formatted JSON on webpage.
-			emo = data[0];
-			//console.log("Cor do cabielo: " + emo.faceAttributes.hair.hairColor[0].color,"\nFace ID: " + emo.faceId);
-            //$("#responseTextArea").val(JSON.stringify(data, null, 2));
-            $("#responseTextArea").val(JSON.stringify(
-                "Cor do cabelo: " + emo.faceAttributes.hair.hairColor[0].color + "Acessório: " + emo.faceAttributes.accessories[0].type
-                //data, null, 2
-            ));
+			atributos = data[0];
+			
+            $("#responseTextArea").val(JSON.stringify(data, null, 2));
+            //ConverteStringToSQL(atributos.faceId,); //Em construcao
 		})
 
 		.fail(function(jqXHR, textStatus, errorThrown) {
@@ -57,7 +53,7 @@
 			});
         };
 	</script>
-
+	
 	<h1>Detect Faces:</h1>
 	Enter the URL to an image that includes a face or faces, then click the <strong>Analyze face</strong> button.
 	<br><br>
@@ -69,12 +65,14 @@
         <div id="jsonOutput" style="width:600px; display:table-cell;">
 		Response:
 		<br><br>
-
+	
 		<textarea id="responseTextArea" class="UIInput" style="width:580px; 
 		height:400px;"></textarea>
+		
 		</div>
 		<div id="imageDiv" style="width:420px; display:table-cell;">
             Source image:
+
             <br><br>
             <img id="sourceImage" width="400" />
 		</div>

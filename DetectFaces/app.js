@@ -1,13 +1,9 @@
 
-function ConverteStringToSQL(faceID, nome, gender, age,url, hair,accessories, glasses, facialHair){
-	var sqlFaceID = faceID;
-	var sqlNome = nome;
-	var sqlIdade = age;
-	var sqlGenero = gender;
-	var sqlCabelo = hair;
-	var sqlAcessorios = accessories;
-	var sqlOculos = glasses;
-
+function ConverteStringToSQL(faceID, gender, age,url, hair,accessories, glasses, facialHair){
+	var fotoSQL = "INSERT INTO deltapremium.foto VALUES(" + url + ");";
+	var faceSQL = "INSERT..."
+	var atributosSQL = "INSERT INTO deltapremium.atributos values('" + gender + "','')";
+	//criar um procedure para inserir os dados de forma mais eficaz!
 }
 
 function ConverteSQLtoArr(string){
@@ -19,4 +15,8 @@ function ConverteSQLtoArr(string){
 var arrSQL = []
 function InsereDados(arrSQL){
 
+}
+
+function retornaString(corCabelo, acessorio){
+	
 }
