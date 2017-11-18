@@ -1,22 +1,13 @@
-
-function ConverteStringToSQL(faceID, gender, age,url, hair,accessories, glasses, facialHair){
+var faceSQL = ""
+function ConverteStringToSQL(faceID, gender, age, hair,accessories, glasses, facialHair){
 	var fotoSQL = "INSERT INTO deltapremium.foto VALUES(" + url + ");";
-	var faceSQL = "INSERT..."
+	//Fazer um sub-select para selecionar o id de cada imagem salva no banco,
+	//Uma imagem pode ter varias pessoas!
 	var atributosSQL = "INSERT INTO deltapremium.atributos values('" + gender + "','')";
-	//criar um procedure para inserir os dados de forma mais eficaz!
-}
-
-function ConverteSQLtoArr(string){
-
-	//Uma funcao em recursiva com a ConverteStringToSQL para converte o insert,
-	//para um array de insert
-}
-
-var arrSQL = []
-function InsereDados(arrSQL){
-
-}
-
-function retornaString(corCabelo, acessorio){
 	
+}
+
+function SalvarDados(urlFoto){
+	faceSQL = "INSERT INTO foto VALUES('" + urlFoto + "');";
+	console.log(faceSQL);
 }
