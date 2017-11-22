@@ -1,0 +1,35 @@
+@html.extend('layout', function(model) {
+  @html.block('content', function(model) {
+  	<h1>Detect Faces:</h1>
+	<p>
+		Enter the URL to an image that includes a face or faces, then click the
+		<strong>Analyze face</strong> button.
+	</p>
+	<br />
+	<br /> 
+	<p>Image to analyze:</p>
+	<input type="text" name="inputImage" id="inputImage" value="http://caiodantas.bs2.com.br/images/stan-lee.jpg" />
+
+	<button onclick="processImage()">Analyze face</button>
+	<br />
+	<br />
+	<div id="wrapper" style="width:1020px; display:table;">
+		<div id="jsonOutput" style="width:600px; display:table-cell;">
+			<span>Response:</span>
+			<br />
+			<br />
+
+			<textarea id="responseTextArea" class="UIInput" style="width:580px; 
+		height:400px;"></textarea>
+
+		</div>
+		<div id="imageDiv" style="width:420px; display:table-cell;">
+			<span>Source image:</span>
+
+			<br />
+			<br />
+			<img id="sourceImage" width="400" />
+		</div>
+	</div>
+  })
+})
