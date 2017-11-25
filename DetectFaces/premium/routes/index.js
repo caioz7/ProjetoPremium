@@ -11,10 +11,10 @@ router.get('/', function(req, res, next) {
 
 router.post('/gravar', async (req, res, next) => {
 	var con = mysql.createConnection({
-	  host: "",
-	  user: "",
-		password: "",
-		database: ""
+	  host: "localhost",
+	  user: "delta",
+		password: "123mudar",
+		database: "dantasninja"
 	});
 
 	con.connect(function(err) {
@@ -23,18 +23,18 @@ router.post('/gravar', async (req, res, next) => {
 
 
 		var dados = JSON.parse(req.body.dados)
-		
-		var sql = `
-INSERT INTO teste (nome) 
-VALUES ('${dados[0].faceId}')`
+		for (var i = 0; i < dados.length; i++) {
+			var sql = `
+INSERT INTO atributos (nome) 
+VALUES ('${dados[i].faceId}')`
 
-		con.query(sql, function (err, result) {
-			if (err) throw err;
-			console.log("1 record inserted");
-		});
+			con.query(sql, function (err, result) {
+				if (err) throw err;
+				console.log("1 record inserted");
+			});
 
-	  //insert
-
+			//insert
+		}
 	});
 })
 
