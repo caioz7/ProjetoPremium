@@ -5,7 +5,8 @@
 	<title>Detect Faces Sample</title>
 	<meta charset="utf-8" />
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-	<script src="/javascripts/app.js" type="text/javascript"></script>
+	<!--<script src="/javascripts/app.js" type="text/javascript"></script>
+	<script src="../routes/index.js" type="text/javascript"></script>-->
 	<!--<script src="db_connection.js" type="text/javascript"></script>-->
 </head>
 
@@ -13,8 +14,9 @@
 
 	@html.block('content')
 
-<script type="text/javascript">
+	<script type="text/javascript">
 		var atributos = '';
+		var emo = ' ';
 		function processImage() {
 			var subscriptionKey = "eb77d769df3046069ec0ccefc4701cd2";
 			var uriBase = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
@@ -45,40 +47,43 @@
 			})
 				.done(function (data) {
 					// Show formatted JSON on webpage.
-					SalvarDados(sourceImageUrl)
-					for (var i = 0; i < data.length; i++) {
-						//atributos = data[i];
-						//console.log(data[i].faceId + "\n" + data[i].faceAttributes.gender + "\n" + data[i].faceAttributes.age + "\n" + sourceImageUrl + "\n" + data[i].faceAttributes.hair.hairColor[i].color);
-
-					}
-
+					emo = data;
 					$("#responseTextArea").val(JSON.stringify(data, null, 2));
 					//faceID, gender, age,url, hair,accessories, glasses, facialHair
 					//ConverteStringToSQL(atributos.faceId, atributos.faceAttributes.gender, atributos.faceAttributes.age, atributos.faceAttributes.hair.hairColor[0].color); //Em construcao
-
+					
 					$.ajax({
 						url: '/gravar',
 						type: 'POST',
 						dataType: 'json',
-						data: {dados: JSON.stringify(data, null, 2)},
-						error: function(x, y, z) {
+						data: { dados: JSON.stringify(data, null, 2) },
+						error: function (x, y, z) {
 							console.log(x, y, z)
 						},
-						success: function(ret) {
+						success: function (ret) {
 							console.log(ret)
 						}
 					})
 				})
-
+				
 				.fail(function (jqXHR, textStatus, errorThrown) {
 					// Display error message.
 					var errorString = (errorThrown === "") ? "Error. " : errorThrown + " (" + jqXHR.status + "): ";
 					errorString += (jqXHR.responseText === "") ? "" : (jQuery.parseJSON(jqXHR.responseText).message) ?
-						jQuery.parseJSON(jqXHR.responseText).message : jQuery.parseJSON(jqXHR.responseText).error.message;
+					jQuery.parseJSON(jqXHR.responseText).message : jQuery.parseJSON(jqXHR.responseText).error.message;
 					alert(errorString);
 				});
-		};
+			};
+			
+
 	</script>
+	<script>/*
+		function Salvar() {
+				SalvarDados(urlFoto)
+		}*/
+	</script>
+	<!--<button onclick="Salvar()">Salvar Dados</button>-->
+		<button>Salvar Dados</button>
 </body>
 
 </html>

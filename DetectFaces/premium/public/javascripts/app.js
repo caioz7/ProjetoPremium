@@ -7,7 +7,4 @@ function ConverteStringToSQL(faceID, gender, age, hair,accessories, glasses, fac
 	
 }
 
-function SalvarDados(urlFoto){
-	faceSQL = "INSERT INTO teste VALUES('" + urlFoto + "');";
-	console.log(faceSQL);
-}
+
